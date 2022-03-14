@@ -1,0 +1,126 @@
+openapi : 3.0.0
+info : 
+  title : Social App - Instagram , Facebook , LinkedIn
+  description : A social media API to get the follower and following along with the Date and Time ![Image](https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg)
+  version : 1.0.1
+
+
+servers : 
+  - url : "{protocol}://localhost:4000{version}"
+    description : Localhost Server ( Use this when you are on Localhost )
+    variables : 
+      protocol : 
+        enum : 
+          - https
+          - http
+        default : http
+      version :  
+        enum : 
+          - /
+          - /api/v1
+        default : /api/v1
+        description : These are some routers
+
+  - url : "{protocol}://lcoabir.herokuapp.com{version}"
+    description : Production Server ( Use this on the web )
+    variables : 
+      protocol : 
+        enum : 
+          - https
+          - http
+        default : https
+      version :  
+        enum : 
+          - /
+          - /api/v1
+        default : /api/v1
+
+paths:
+  /linkedin:
+    get:
+      tags: 
+        - Social Media Routes
+      summary: Returns the numbers of followers and follows and the date and the time from LinkedIn
+      responses:
+        '200':   
+          description: OK 
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties : 
+                  username : 
+                    type : string
+                  follower : 
+                    type : number
+                  follow : 
+                    type : number
+                  date : 
+                    type : string
+        400 : 
+          description : Bad Request
+
+  /facebook:
+    get:
+      tags: 
+        - Social Media Routes
+      summary: Returns the numbers of followers and follows and the date and the time from Facebook
+      responses:
+        '200':   
+          description: OK 
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties : 
+                  username : 
+                    type : string
+                  follower : 
+                    type : number
+                  follow : 
+                    type : number
+                  date : 
+                    type : string
+        400 : 
+          description : Bad Request
+
+  /instagram:
+    get:
+      tags: 
+        - Social Media Routes
+      summary: Returns the numbers of followers and follows and the date and the time from Instagram
+      responses:
+        '200':   
+          description: OK 
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties : 
+                  username : 
+                    type : string
+                  follower : 
+                    type : number
+                  follow : 
+                    type : number
+                  date : 
+                    type : string
+        400 : 
+          description : Bad Request
+  
+  /:
+    get:
+      tags: 
+        - Home Page Routes
+      summary: Shows you a greeting message
+      responses:
+        '200':   
+          description: OK 
+          content:
+            application/json:
+              schema: 
+                type: String
+                example : "Hello"
+        400 : 
+          description : Bad Request
+ 
